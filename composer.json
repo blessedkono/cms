@@ -1,0 +1,20 @@
+{
+    "name": "nextbyte/website-cms",
+    "description": "this id for website cms",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "francistito",
+            "email": "francistito07@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Nextbyte\\Cms\\": "src/"
+        }
+
+    }
+}
