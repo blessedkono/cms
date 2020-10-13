@@ -1,0 +1,36 @@
+
+
+.table_head{
+    background-color: lightgray !important;
+
+}
+
+.note_label{
+    color: grey;
+    font-style: italic;
+}
+/*.ib{*/
+    /*width: 40px;*/
+    /*height: 20px;*/
+/*}*/
+
+.footer_po{
+    position: absolute;
+    bottom: 10px;
+}
+
+.sign_po{
+    position: absolute;
+    /*left: 10px;*/
+}
+
+.stamp_po{
+    position: absolute;
+    margin-left: 870px;
+}
+
+
+.footer_label{
+    position: absolute;
+
+}

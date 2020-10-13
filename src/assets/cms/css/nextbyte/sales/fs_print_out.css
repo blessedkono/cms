@@ -1,0 +1,45 @@
+/*Financial Statement Css - Print out*/
+.tr_head{
+    background-color: #eb4c58;
+    border-bottom: blue;
+}
+
+
+.number_input{
+    text-align: right;
+
+}
+
+
+ table{
+     width: 100%;
+ }
+
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid #dddddd;
+}
+
+
+
+
+#company_logo{
+    position: relative;
+    left: 39%;
+}
+
+
+.title{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.date{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+.hidden{
+    visibility: hidden;
+}

@@ -6,7 +6,29 @@ class CmsServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/routes/Cms/dashboard.php');
+        $this->loadRoutesFrom(__DIR__.'/routes/Cms/blog.php');
+        $this->loadRoutesFrom(__DIR__.'/routes/Cms/category.php');
+        $this->loadRoutesFrom(__DIR__.'/routes/Cms/faq.php');
+        $this->loadRoutesFrom(__DIR__.'/routes/Cms/client.php');
+        $this->loadRoutesFrom(__DIR__.'/routes/Cms/testimonial.php');
+
+        $this->loadViewsFrom(__DIR__.'/views','cms');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+
+        //publish from package to laravel project
+        $this->publishes([
+            __DIR__.'/Http/Controllers' => resource_path('/Http/Controllers'),
+            __DIR__.'/Models' => resource_path('/Models'),
+            __DIR__.'/routes' => resource_path('/routes'),
+            __DIR__.'/database/migrations' => resource_path('/database/migrations'),
+            __DIR__.'/views' => resource_path('/views')
+        ]);
+
+        //publish assets
+        $this->publishes([
+            __DIR__.'/assets' => public_path('vendor/'),
+        ], 'public');
     }
 
     public function register()
