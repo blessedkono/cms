@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Nextbyte\Cms\Http\Controllers\Cms;
+namespace App\Http\Controllers\Cms;
 
 
 use App\Http\Controllers\Controller;

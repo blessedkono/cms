@@ -6,7 +6,7 @@
  * Time: 3:21 PM
  */
 
-namespace App\Models\BaseModel\Traits\Relationship;
+namespace Nextbyte\Cms\Models\BaseModel\Traits\Relationship;
 
 use App\Models\Enquiry\EnquiryType;
 use App\Models\System\Document;

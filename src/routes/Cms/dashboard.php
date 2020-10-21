@@ -1,7 +1,7 @@
 <?php
 
 Route::group([
-    'namespace' => 'Nextbyte\Cms\Http\Controllers\Cms',
+    'namespace' => 'Cms',
     'prefix' => 'cms',
     'as'=> 'cms.'
 ], function() {

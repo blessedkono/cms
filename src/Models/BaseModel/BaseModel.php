@@ -6,19 +6,19 @@
  * Time: 11:12 AM
  */
 
-namespace App\Models\BaseModel;
+namespace Nextbyte\Cms\Models\BaseModel;
 
 
-use App\Models\BaseModel\Traits\Attribute\BaseModelAttribute;
-use App\Models\BaseModel\Traits\Relationship\BaseModelRelationship;
 use Illuminate\Database\Eloquent\Model;
+use Nextbyte\Cms\Models\BaseModel\Traits\Attribute\BaseModelAttribute;
+use Nextbyte\Cms\Models\BaseModel\Traits\Relationship\BaseModelRelationship;
 use OwenIt\Auditing\Auditable;
-use Webpatser\Uuid\Uuid;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use Ramsey\Uuid\Uuid;
 
-class BaseModel extends Model implements AuditableContract
+class BaseModel extends Model
 {
-    use BaseModelAttribute, BaseModelRelationship, Auditable;
+    use BaseModelAttribute, BaseModelRelationship;
     /**
      * Get the route key for the model.
      *

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nextbyte\Cms\Http\Controllers\Cms;
+namespace App\Http\Controllers\Cms;
 
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;

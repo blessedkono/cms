@@ -16,7 +16,7 @@
 
                     {{ Html::style(url("cms/css/fonts.googleapis.css"), ['rel' => 'stylesheet', 'type' => 'text/css']) }}
 
-                    {{ Html::style(url('cms/vendor/bootstrap/css/bootstrap.min.css')) }}
+                    {{ Html::style(url('assets/cms/vendor/bootstrap/css/bootstrap.min.css')) }}
                     {{ Html::style(url('cms/vendor/animate/animate.css')) }}
                     {{ Html::style(url('cms/vendor/font-awesome/css/fontawesome-all.min.css')) }}
                     {{ Html::style(url('cms/vendor/magnific-popup/magnific-popup.css')) }}
@@ -39,10 +39,10 @@
                 <body>
                 <section class="body" >
 
-                    @include("cms::cms/includes/components/header")
+                    @include("cms::includes.components.header")
 
                     <div class="inner-wrapper">
-                         @include('cms::cms/includes/components/sidebar')
+                         @include('cms::includes.components.sidebar')
                         <section role="main" class="content-body">
 
 

@@ -6,6 +6,10 @@ class CmsServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+        $this->loadViewsFrom(__DIR__.'/views/cms', 'cms');
+
+
         $this->loadRoutesFrom(__DIR__.'/routes/Cms/dashboard.php');
         $this->loadRoutesFrom(__DIR__.'/routes/Cms/blog.php');
         $this->loadRoutesFrom(__DIR__.'/routes/Cms/category.php');
@@ -13,7 +17,7 @@ class CmsServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/routes/Cms/client.php');
         $this->loadRoutesFrom(__DIR__.'/routes/Cms/testimonial.php');
 
-        $this->loadViewsFrom(__DIR__.'/views','cms');
+//        $this->loadViewsFrom(__DIR__.'/views','cms');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
         //publish from package to laravel project
@@ -25,9 +29,8 @@ class CmsServiceProvider extends ServiceProvider
             __DIR__.'/views' => resource_path('/views')
         ]);
 
-        //publish assets
         $this->publishes([
-            __DIR__.'/assets' => public_path('vendor/'),
+            __DIR__.'/assets/cms' => public_path('vendor/cms'),
         ], 'public');
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nextbyte\Cms\Http\Controllers\Cms;
+namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -22,7 +22,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('cms::cms.index');
+        return view('cms.index');
     }
 
 
