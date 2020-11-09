@@ -21,12 +21,15 @@ class CmsServiceProvider extends ServiceProvider
 
         //publish from package to laravel project
         $this->publishes([
-            __DIR__.'/Http/Controllers' => resource_path('/Http/Controllers'),
-            __DIR__.'/Models' => resource_path('/Models'),
-            __DIR__.'/routes' => resource_path('/routes'),
-            __DIR__.'/database/migrations' => resource_path('/database/migrations'),
-            __DIR__.'/views' => resource_path('/views')
+            __DIR__.'/Http/Controllers' => resource_path('Controllers'),
+            __DIR__.'/Models' => resource_path('Models'),
+            __DIR__.'/routes' => resource_path('routes'),
+            __DIR__.'/views' => resource_path('views')
         ]);
+
+        $this->publishes([
+            __DIR__.'/../database/migrations/' => database_path('migrations')
+        ], 'migrations');
 
         $this->publishes([
             __DIR__.'/assets/cms' => public_path('vendor/cms'),
