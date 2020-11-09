@@ -1,18 +1,16 @@
-# laravel code encryption
+# laravel website cms
 this for encrypt laravel project 
 
 
 
 Installation
-## Step 1
-At the first, You have to install phpBolt.
 
-## Step 2
+## Step 1
 Require the package with composer using the following command:
 ```bash
 composer require nextbytetz/website-cms
 ```
-## Step 3
+## Step 2
 The service provider will automatically get registered. Or you may manually add the service provider in your config/app.php file:
 
 ```bash
@@ -23,17 +21,12 @@ The service provider will automatically get registered. Or you may manually add 
 
 ```
 
-
-
-## Step 4 (Optional)
+## Step 3
 You can publish the config file with this following command:
 
 ```bash
 php artisan vendor:publish --provider="Nextbyte\Cms\CmsServiceProvider"
 ```
-
-
-  
 You can get package updates by simply use composer update
 
 ```bash
