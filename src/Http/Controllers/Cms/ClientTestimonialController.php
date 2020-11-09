@@ -136,6 +136,27 @@ class ClientTestimonialController extends Controller
         return redirect()->route('cms.testimonial.fill_for_shift', $client_testimonial->shift->uuid)->withFlashSuccess(__('alert.general.created'));
     }
 
+    //change status
+    public function changeStatus(Testimonial $client_testimonial)
+    {
+        $status = $client_testimonial->isactive;
+        switch ($status){
+            case 1;
+                $this->client_testimonial_repo->changeStatus($client_testimonial,0);
+                return redirect()->back()->withFlashSuccess(trans('alert.general.deactivated'));
+                break;
+
+            case 0:
+                $this->client_testimonial_repo->changeStatus($client_testimonial,1);
+                return redirect()->back()->withFlashSuccess(trans('alert.general.activated'));
+                break;
+            default :
+                return redirect()->back();
+
+                break;
+
+        }
+    }
 
     /**
      *list all ClientTestimonial

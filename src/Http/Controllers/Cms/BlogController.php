@@ -31,7 +31,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = $this->blogs->queryActive()->get();
         return view('cms.blog.index')
             ->with('blogs',$blogs);
     }
@@ -46,13 +46,11 @@ class BlogController extends Controller
     }
 
     //store blog
-    public function store(Request $request)
+    public function store(BlogRequest $request)
     {
         $input = $request->all();
         $blog = (new BlogRepository())->store($input);
-
         return redirect()->route('cms.blog.show',$blog->uuid);
-//        return response()->json($blog,200);
     }
 
     //show the blog profile
@@ -81,19 +79,22 @@ class BlogController extends Controller
     //edit blog
     public function edit(Blog $blog)
     {
+        $attachments = $blog->documents()->where('document_id',1)->get();
         $categories = (new BlogCategoryRepository())->queryActive()->pluck('name','id');
+        $category_ids = $blog->categories->pluck('id');
         return view('cms.blog.edit.edit')
             ->with('categories',$categories)
+            ->with('category_ids',$category_ids)
+            ->with('attachments',$attachments)
             ->with('blog',$blog);
     }
 
     //update note
-    public function update(Request $request)
+    public function update(BlogRequest $request,Blog $blog)
     {
         $input = $request->all();
-        $blog = (new BlogRepository())->find($input['blog_id']);
         $blog = $this->blogs->update($input,$blog);
-        return response()->json($blog);
+        return redirect()->route('cms.blog.show',$blog->uuid)->withFlashSuccess(trans('alert.general.updated'));
 
     }
 
@@ -147,19 +148,7 @@ class BlogController extends Controller
         };
     }
 
-    /*remove task document*/
 
-    public function removeDocument($uploaded_doc_id)
-    {
-
-        $blog = $this->blogs->query()->whereHas('documents', function ($query) use ($uploaded_doc_id) {
-            $query->where('document_resource.id', $uploaded_doc_id);
-        })->first();
-
-        $tender = $this->blogs->removeTaskDocument($uploaded_doc_id);
-
-        return redirect()->route('cms.blog.show',$blog)->withFlashSuccess(__(''));
-    }
 
 
 

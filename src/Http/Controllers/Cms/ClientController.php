@@ -10,6 +10,7 @@ use App\Models\Cms\Client;
 use App\Repositories\Cms\ClientRepository;
 use App\Repositories\System\DocumentResourceRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Yajra\DataTables\DataTables;
 
 class ClientController extends Controller
@@ -176,6 +177,15 @@ class ClientController extends Controller
                 break;
 
         }
+    }
+
+    public function sendTestimonialLink(Client $client)
+    {
+        $url =  URL::temporarySignedRoute(
+            'testimonial', now()->addMinutes(30), ['user' => 1,'client'=>$client->uuid]
+        );
+        $this->client_repo->sendTestimonialLink($url,$client);
+        return redirect()->back();
     }
 
 
