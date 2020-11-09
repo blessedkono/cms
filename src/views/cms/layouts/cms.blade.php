@@ -16,7 +16,7 @@
 
                     {{ Html::style(url("cms/css/fonts.googleapis.css"), ['rel' => 'stylesheet', 'type' => 'text/css']) }}
 
-                    {{ Html::style(url('assets/cms/vendor/bootstrap/css/bootstrap.min.css')) }}
+                    {{ Html::style(url('cms/vendor/bootstrap/css/bootstrap.min.css')) }}
                     {{ Html::style(url('cms/vendor/animate/animate.css')) }}
                     {{ Html::style(url('cms/vendor/font-awesome/css/fontawesome-all.min.css')) }}
                     {{ Html::style(url('cms/vendor/magnific-popup/magnific-popup.css')) }}
@@ -32,6 +32,11 @@
                     {{ Html::script(url('cms/vendor/modernizr/modernizr.js')) }}
                     {{ Html::script(url('cms/vendor/chartjs/Chart.min.js')) }}
 
+
+                    {{--STart notification css--}}
+                    {{--{{ Html::style(asset_url() . "/nextbyte/plugins/AmaranJS/dist/css/amaran.min.css") }}--}}
+                    {{--{{ Html::style(asset_url() . "/nextbyte/plugins/AmaranJS/dist/css/animate.min.css") }}--}}
+                    {{--end notification css--}}
                     @stack('custom')
 
 
@@ -39,11 +44,23 @@
                 <body>
                 <section class="body" >
 
-                    @include("cms::includes.components.header")
+                    @include("cms/includes/components/header")
 
                     <div class="inner-wrapper">
-                         @include('cms::includes.components.sidebar')
+
+                        @auth
+                            @include('cms/includes/components/sidebar')
+                        @endauth
                         <section role="main" class="content-body">
+
+
+                            {{--Hide header on home page--}}
+                            <header  class="page-header " style="background-color:#32464a">
+                                <h2>{{ $header }}</h2>
+                                <div style="margin-right: 10px"  class="right-wrapper text-right">
+                                    {{ Breadcrumbs::render() }}
+                                </div>
+                            </header>
 
 
 
@@ -75,18 +92,30 @@
                 {{ Html::script(url('cms/vendor/jquery-placeholder/jquery-placeholder.js')) }}
                 @stack('after-scripts')
                 {{ Html::script(url('cms/js/theme.js')) }}
-                {{ Html::script(url('cms/js/custom.js')) }}
+                {{--{{ Html::script(url('cms/js/custom.js')) }}--}}
                 {{ Html::script(url('cms/js/theme.init.js')) }}
                 {{ Html::script(url('cms/vendor/select2/js/select2.min.js')) }}
                 {{ Html::script(url('cms/vendor/jquery-maskedinput/jquery.maskedinput.js')) }}
                 {{ Html::script(url('assets/nextbyte/js/custom.js')) }}
                 {{ Html::script(url("cms/vendor/pnotify/pnotify.custom.js")) }}
+                {!! Html::script(url('vendor/jquery-expander/jquery.expander.js')) !!}
+
 
                 <script>
                     $(document).ready(function () {
 
                         $('.mobile').mask("9999999999");
 
+                        /*Read more*/
+                        $(document).ready(function() {
+                            $('#project_description').expander({
+                                slicePoint: 300,
+                                widow: 2,
+                                expandEffect: 'show',
+                                userCollapseText: '{{ __('label.read_less') }}',
+                                expandText: '{{ __('label.read_more') }}',
+                            });
+                        });
                     })
                 </script>
 

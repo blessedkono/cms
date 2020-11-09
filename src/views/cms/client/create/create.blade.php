@@ -9,8 +9,6 @@
 
 @section('content')
 
-
-
     {{ Form::open(['route' => 'cms.client.store', 'autocomplete' => 'off','method' => 'post', 'name' => 'create', 'class' => 'needs-validation', 'novalidate' , 'enctype'=>"multipart/form-data",]) }}
     {{ Form::hidden('action_type', 1, []) }}
     {{ Form::hidden('today', getTodayDate(), []) }}
@@ -26,7 +24,7 @@
                                 <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         {{ Form::label('name', __('label.name'), ['class' =>'required_asterik']) }}
-                                        {{ Form::text('name',null,['class'=>'form-control', 'required', 'id' => 'name','placeholder' => '', 'autocomplete' => 'off']) }}
+                                        {{ Form::text('name',null,['class'=>'form-control', 'id' => 'name','placeholder' => '', 'autocomplete' => 'off']) }}
                                         {!! $errors->first('name', '<span class="badge badge-danger">:message</span>')  !!}
                                     </div>
                                 </div>
@@ -53,8 +51,6 @@
                                     <div class="form-group">
                                         {{ Form::label('iscompany', __('label.iscompany'), ['class' =>'required_asterik']) }}
                                         {{ Form::select('iscompany',['0' => 'No', '1' => 'Yes'],null,['class'=>'form-control select2 iscompany', 'required', 'id' => 'iscompany','placeholder' => '', 'autocomplete' => 'off','required']) }}
-
-                                        {{--                                        {{ Form::checkbox('iscompany',1,null,['class'=>'', 'id' => 'iscompany','placeholder' => '']) }}--}}
                                         {!!  $errors->first('iscompany', '<span class="badge badge-danger">:message</span>') !!}
                                     </div>
                                 </div>

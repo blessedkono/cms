@@ -2,8 +2,8 @@
     <div class="col-12">
         {!! Form::label('title', __("label.title"), ['class' => 'required_asterik']) !!}
 
-        {!! Form::text('task_title',$blog->title , ['placeholder' => __('label.title')  ,'id'=>'title', 'class' => 'form-control','required']) !!}
-        {!! $errors->first('task_title', '<span class="badge badge-danger">:message</span>') !!}                    </div>
+        {!! Form::text('title',$blog->title , ['placeholder' => __('label.title')  ,'id'=>'title', 'class' => 'form-control','required']) !!}
+        {!! $errors->first('title', '<span class="badge badge-danger">:message</span>') !!}                    </div>
 </div>
 
 <div class="row mt-2" >

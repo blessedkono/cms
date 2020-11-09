@@ -42,7 +42,7 @@
 @endsection
 
 @push('after-scripts')
-    <script type="text/javascript">;
+    <script type="text/javascript">
         var url = "{{ url("/") }}";
         $('#client-table').DataTable({
             processing: true,

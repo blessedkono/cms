@@ -1,4 +1,4 @@
-@extends('cms.layouts.cms', ['title' => __('label.cms.testimonial.profile') , 'header' => __('label.cms.testimonial.profile')])
+@extends('cms.layouts.cms', ['title' => __('label.profile') , 'header' => __('label.profile')])
 
 @include('includes.sweetalert_assets')
 
@@ -22,7 +22,9 @@
                             <div class="col-md-12">
                                 <div class="pull-right">
                                         <a href="{{ route('cms.testimonial.edit',$client_testimonial->uuid) }}" class="btn btn-xs btn-primary"><i class="fas fa-edit"></i> {{ __('label.crud.edit') }}</a>
-                                        {!! HTML::decode(link_to_route('cms.testimonial.delete', trans('label.crud.delete'), [$client_testimonial->uuid], ['data-method' => 'delete', 'data-trans-button-cancel' => trans('buttons.general.cancel'), 'data-trans-button-confirm' => trans('buttons.general.confirm'), 'data-trans-title' => trans('label.warning'), 'data-trans-text' => trans('alert.general.alert.delete'), 'class' => 'btn btn-danger btn-xs'])) !!}
+                                    {{ $client_testimonial->change_status_button }}
+
+                                    {!! HTML::decode(link_to_route('cms.testimonial.delete', trans('label.crud.delete'), [$client_testimonial->uuid], ['data-method' => 'delete', 'data-trans-button-cancel' => trans('buttons.general.cancel'), 'data-trans-button-confirm' => trans('buttons.general.confirm'), 'data-trans-title' => trans('label.warning'), 'data-trans-text' => trans('alert.general.alert.delete'), 'class' => 'btn btn-danger btn-xs'])) !!}
                                     <a href="{{ route('cms.testimonial.index') }}" class="btn btn-xs btn-info"><i class="fas fa-closed-captioning"></i> {{ __('label.close') }}</a>
                                 </div>
                             </div>
@@ -45,6 +47,10 @@
                                     <tr>
                                         <th width="130px">{{ __('label.company') }}</th>
                                         <td>{{ $client_testimonial->company_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="130px">{{ __('label.isactive') }}</th>
+                                        <td>{{ ($client_testimonial->isactive)?trans('label.yes'):trans('label.no') }}</td>
                                     </tr>
                                     <tr>
                                         <th width="130px">{{ trans('label.created_at') }}</th>

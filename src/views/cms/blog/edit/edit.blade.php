@@ -16,23 +16,27 @@
 @section("content")
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route' => ['cms.blog.store'],'method'=>'post', 'autocomplete' => 'off',  'id' =>'store_blog', 'class' => 'form-horizontal needs-validation', 'novalidate','enctype'=>"multipart/form-data"]) !!}
+            {!! Form::open(['route' => ['cms.blog.update',$blog->uuid],'method'=>'put', 'autocomplete' => 'off',  'id' =>'store_blog', 'class' => 'form-horizontal needs-validation', 'novalidate','enctype'=>"multipart/form-data"]) !!}
+            {!! Form::hidden('action_type', 2, []) !!}
 
             <div class="row">
                 <div class="col-md-6">
 
                 </div>
                 <div class="col-md-6">
-                    <button type="button" class="mb-1 mt-1 mr-1 btn btn-primary btn-xs pull-right"><i class="fas fa-paper-plane"></i> {{trans('label.blog.publish')}}</button>
+{{--                    <button type="button" class="mb-1 mt-1 mr-1 btn btn-primary btn-xs pull-right"><i class="fas fa-paper-plane"></i> {{trans('label.blog.publish')}}</button>--}}
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-6">
                     @include('cms.blog.edit.includes.post_info')
+                    @include('cms.blog.edit.includes.post_setting')
+
                 </div>
 
-                <div class="col-md-3">
-                    @include('cms.blog.edit.includes.post_setting')
+                <div class="col-md-6">
+                    @include('cms.includes.edit_images')
+
                 </div>
             </div>
 
@@ -77,50 +81,88 @@
             $(".select2").select2();
 
 
+            $(document).ready(function() {
+                $(document).ready(function() {
+
+                    var systemSelect = $(".isschedule option:selected").val();
+                    if (systemSelect ==1 ) {
+
+                        activate_schedule_div()
+                    } else {
+                        hide_schedule_div()
+                    }
+
+                    $("select.isschedule").change(function () {
+                        var selectedOption = $(this).children("option:selected").val();
+                        if(selectedOption == 1)
+                        {
+                            activate_schedule_div()
+                        }else
+                        {
+                            hide_schedule_div()
+
+                        }
+
+                    });
+                });
+                //show contact person div
+                function activate_schedule_div()
+                {
+                    $("#" + 'schedule_div').show();
+
+                }
+
+                //hide contact person div
+                function hide_schedule_div() {
+                    $("#" + 'schedule_div').hide();
+
+                }
+            });
+
 
 
             //save blog before publish
-            $(document).on('click','#save_btn',function (e) {
-                e.preventDefault();
-                var title = $('#title').val();
-                // var description = $('#editor').val();
-                var description = theEditor.getData();
-                var category  = $('#blog_category').val();
-                var publish_date  = $('#publish_date').val();
-                var publish_time  = $('#publish_time').val();
-                var data = {
-                    'title' : title,
-                    'content' :description,
-                    'category' : category,
-                    'publish_date' : publish_date,
-                    'publish_time' : publish_time,
+            {{--$(document).on('click','#save_btn',function (e) {--}}
+            {{--    e.preventDefault();--}}
+            {{--    var title = $('#title').val();--}}
+            {{--    // var description = $('#editor').val();--}}
+            {{--    var description = theEditor.getData();--}}
+            {{--    var category  = $('#blog_category').val();--}}
+            {{--    var publish_date  = $('#publish_date').val();--}}
+            {{--    var publish_time  = $('#publish_time').val();--}}
+            {{--    var data = {--}}
+            {{--        'title' : title,--}}
+            {{--        'content' :description,--}}
+            {{--        'category' : category,--}}
+            {{--        'publish_date' : publish_date,--}}
+            {{--        'publish_time' : publish_time,--}}
 
-                };
-                console.log(data)
-                var formData = new FormData(document.getElementById( 'store_blog'));
-                var url = '{{route('cms.blog.store')}}';
-                $.ajax({
-                    type: 'post',
-                    url: url,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: data,
-                    cache: false,
+            {{--    };--}}
+            {{--    console.log(data)--}}
+            {{--    var formData = new FormData(document.getElementById( 'store_blog'));--}}
+            {{--    var url = '{{route('cms.blog.store')}}';--}}
+            {{--    $.ajax({--}}
+            {{--        type: 'post',--}}
+            {{--        url: url,--}}
+            {{--        headers: {--}}
+            {{--            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+            {{--        },--}}
+            {{--        data: data,--}}
+            {{--        cache: false,--}}
 
-                    success: function (response) {
-                        console.log(response);
-                        if (response) {
-                            // new PNotify({
-                            //     title: 'Document is successfully attached in',
-                            //     type: 'info',
-                            // });
-                        }
-                    },
-                }).done(
+            {{--        success: function (response) {--}}
+            {{--            console.log(response);--}}
+            {{--            if (response) {--}}
+            {{--                // new PNotify({--}}
+            {{--                //     title: 'Document is successfully attached in',--}}
+            {{--                //     type: 'info',--}}
+            {{--                // });--}}
+            {{--            }--}}
+            {{--        },--}}
+            {{--    }).done(--}}
 
-                );
-            })
+            {{--    );--}}
+            {{--})--}}
 
 
         })

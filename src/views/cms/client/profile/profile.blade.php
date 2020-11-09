@@ -26,7 +26,7 @@
                                     <a href="{{ route('cms.client.edit',$client->uuid) }}"
                                        class="btn btn-xs btn-primary"><i
                                                 class="fas fa-edit"></i> {{ __('label.crud.edit') }}</a>
-{{--                                    {{ $client->change_status_button }}--}}
+                                    {{ $client->change_status_button }}
                                     <a href="{{ route('cms.client.index') }}" class="btn btn-xs btn-info"><i
                                                 class="fas fa-closed-captioning"></i> {{ __('label.close') }}</a>
 

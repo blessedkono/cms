@@ -24,8 +24,6 @@
         </tr>
 
 
-
-
         <tr>
             <th> @lang('label.externa_id') : </th>
             <td>{{ $client->external_id }}</td>
@@ -33,6 +31,9 @@
 
         </tbody>
     </table>
+
+
+    <a class="btn btn-dark" href="{{route('cms.client.send_testimonial_link',$client->uuid)}}">Send Link</a>
 
 
 </div>
