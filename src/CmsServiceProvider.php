@@ -33,12 +33,13 @@ class CmsServiceProvider extends ServiceProvider
             __DIR__.'/database/migrations/' => database_path('migrations'),
             __DIR__.'/Models/Cms' => resource_path('Models/Cms'),
             __DIR__.'/Http/Controllers/Cms' => resource_path('Controllers/Cms'),
-
+            __DIR__.'/Repositories' => resource_path('Repositories'),
         ], 'migrations');
 
         $this->publishes([
             __DIR__.'/assets/cms/' => public_path('cms/public'),
-            __DIR__.'/routes/' => base_path('routes'),
+            __DIR__.'/routes/Cms' => base_path('routes'),
+            __DIR__.'/routes/Public' => base_path('routes'),
             __DIR__.'/views/' => resource_path('views')
 
         ], 'assets');
