@@ -1,7 +1,4 @@
 # laravel website cms
-this for encrypt laravel project 
-
-
 
 Installation
 
