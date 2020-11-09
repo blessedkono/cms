@@ -24,7 +24,7 @@ class CmsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/database/migrations/' => database_path('migrations'),
             __DIR__.'/Models/' => resource_path('Models'),
-            __DIR__.'/Http/Controllers/' => resource_path('Controllers'),
+            __DIR__.'/Http/Controllers/Cms/BlogCategoryController.php' => resource_path('Controllers/BlogCategoryController.php'),
 
 
         ], 'migrations');
