@@ -24,7 +24,7 @@ class CmsServiceProvider extends ServiceProvider
             __DIR__.'/Http/Controllers' => resource_path('Controllers'),
             __DIR__.'/Models' => resource_path('Models'),
             __DIR__.'/routes' => resource_path('routes'),
-            __DIR__.'/views' => resource_path('views')
+            __DIR__.'/views' => resource_path('views/vendor')
         ]);
 
         $this->publishes([
@@ -32,7 +32,7 @@ class CmsServiceProvider extends ServiceProvider
         ], 'migrations');
 
         $this->publishes([
-            __DIR__.'/assets/cms' => public_path('vendor/cms'),
+            __DIR__.'/assets/cms' => public_path('public'),
         ], 'public');
     }
 
