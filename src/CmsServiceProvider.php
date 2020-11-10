@@ -39,6 +39,7 @@ class CmsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/assets/cms/' => public_path('public/cms'),
             __DIR__.'/routes/Cms' => base_path('routes/cms'),
+            __DIR__.'/Library' => base_path('Library'),
             __DIR__.'/routes/Public' => base_path('routes/Public'),
             __DIR__.'/views/' => resource_path('views')
         ], 'assets');
