@@ -32,7 +32,7 @@ class CmsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/database/migrations/' => database_path('migrations'),
             __DIR__.'/Models/Cms' => base_path('app/Models/Cms'),
-            __DIR__.'/Http/Controllers/Cms' => base_path('app/Http/Controllers/Cms'),
+            __DIR__.'/Http/Controllers' => base_path('app/Http/Controllers'),
             __DIR__.'/Repositories' => base_path('app/Repositories'),
         ], 'migrations');
 
