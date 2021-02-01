@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Http\Controllers\Cms;
-
-
 use App\Http\Controllers\Controller;
+use nextbytetz\websitecms\Http\Controllers\Cms;
+
+
 use App\Models\Cms\Category;
 use App\Repositories\Cms\BlogCategoryRepository;
 use Illuminate\Http\Request;

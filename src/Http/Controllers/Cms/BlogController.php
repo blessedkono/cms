@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Cms;
+namespace nextbytetz\websitecms\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Resource\BlogRequest;
