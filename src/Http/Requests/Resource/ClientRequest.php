@@ -80,8 +80,6 @@ class ClientRequest extends Request
         $input = $this->all();
         $input['tin'] = isset($input['tin']) ? str_replace("-", "", $input['tin']) : null;
         $input['email'] = isset($input['email']) ? strtolower(trim($input['email'])) : null;
-        $input['max_loan_limit'] = isset($input['max_loan_limit']) ? str_replace(",", "", $input['max_loan_limit']) : null;
-        $input['manual_open_balance'] = isset($input['manual_open_balance']) ? str_replace(",", "", $input['manual_open_balance']) : null;
         $input['name'] = isset($input['name']) ? proper_case_word($input['name']): null;
         $input['externa_id'] = isset($input['externa_id']) ? proper_case_word(remove_extra_white_spaces($input['externa_id'])) : null;
         $this->replace($input);

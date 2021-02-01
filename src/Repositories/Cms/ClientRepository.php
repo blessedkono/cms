@@ -1,13 +1,14 @@
 <?php
 
-namespace Nextbyte\Cms\Repositories\Cms;
+namespace App\Repositories\Cms;
 
+use App\Models\Cms\Client;
 use App\Models\System\Region;
+use App\Notifications\Cms\SendTestimonialLinkNotification;
+use App\Repositories\BaseRepository;
 use App\Repositories\System\DocumentResourceRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use Nextbyte\Cms\Models\Cms\Client;
-use Nextbyte\Cms\Repositories\BaseRepository;
 
 class ClientRepository extends BaseRepository
 {
@@ -176,10 +177,10 @@ class ClientRepository extends BaseRepository
     }
 
 
-    /*Find Overall Balance for all clients*/
-    public function findOverallBalanceForAllClients()
+    //send link to client to fill testimonial
+    public function sendTestimonialLink($url,$client)
     {
-        return $this->query()->sum('loan_balance');
+        $client->notify(new SendTestimonialLinkNotification($url));
     }
 
 }

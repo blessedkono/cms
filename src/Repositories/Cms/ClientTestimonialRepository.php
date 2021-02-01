@@ -53,6 +53,17 @@ class ClientTestimonialRepository extends BaseRepository
         });
     }
 
+    public function storeFromClient($input,$client)
+    {
+        $input = [
+            'client_id' => $client->id,
+              'designation_id' => $input['designation_id'],
+                'company_name' => $input['company'],
+                'content' =>$input['content'] ,
+        ];
+        $this->store($input);
+    }
+
     /*Destroy / remove ClientDiscount*/
     public function delete(Model $client_testimonial)
     {

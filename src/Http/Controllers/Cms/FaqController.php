@@ -57,15 +57,23 @@ class FaqController extends Controller
     }
 
 
+    /**
+     * @param Faq $faq
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function profile(Faq $faq)
     {
         return view('cms.faq.profile.profile')
             ->with('faq', $faq);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function search(){
+        $faqs = $this->faqs->getAllByRank()->get();
         return view('system.faq.search.search')->with([
-            'faqs' => $this->faqs->getAll(),
+            'faqs' => $faqs,
         ]);
     }
     /**

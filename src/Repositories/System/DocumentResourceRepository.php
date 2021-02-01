@@ -56,11 +56,12 @@ class DocumentResourceRepository extends BaseRepository
     }
 
 
-
     /**
+     * @param $resource_id
+     * @param $document_id
+     * @param $document_file_input_key
      * @param array $input
-     * @param
-     *  * Save document - MAIN FUNCTION For saving document - Call this
+     * @return mixed
      */
     public function saveDocument($resource_id, $document_id, $document_file_input_key,array $input)
     {

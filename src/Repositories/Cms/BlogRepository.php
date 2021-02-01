@@ -7,6 +7,7 @@ namespace App\Repositories\Cms;
 
 use App\Models\Cms\Blog;
 use App\Repositories\BaseRepository;
+use App\Repositories\System\DocumentResourceRepository;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -25,22 +26,50 @@ class BlogRepository extends BaseRepository
     {
       return   DB::transaction(function ()use($input){
             $blog = $this->query()->create([
-                'title' =>$input['task_title'],
+                'title' =>$input['title'],
                 'content' =>$input['content'],
                 'publish_date' => $input['publish_date'],
                 'publish_time' => $input['publish_time'],
-                'user_id' => 6
+                'isactive' => $input['isactive'],
+                'isscheduled' => $input['isscheduled'],
+                'user_id' => access()->user()->id
             ]);
 
 
 
             //sync category for a blog
             $this->updateCategories($blog,$input);
-            return $blog;
+
+            //save documents
+          $this->saveDocuments($blog->id,$input);
+          return $blog;
         });
     }
 
 
+    //update blog
+    public function update(array $input,$blog)
+    {
+//        $user = access()->user();
+        return DB::transaction(function ()use($input,$blog){
+            $blog->update([
+                'title' =>$input['title'],
+                'content' =>$input['content'],
+                'publish_date' => $input['publish_date'],
+                'publish_time' => $input['publish_time'],
+                'isscheduled' => $input['isscheduled'],
+                'user_id' => access()->user()->id
+            ]);
+
+
+            //sync category for a blog
+            $this->updateCategories($blog,$input);
+            //save documents
+            $this->saveDocuments($blog->id,$input);
+            return $blog;
+        });
+
+    }
 
 
 
@@ -59,31 +88,9 @@ class BlogRepository extends BaseRepository
     }
 
     //delete blog
-    //delete note
     public function delete($blog)
     {
         $blog->delete();
-    }
-
-    //update blog
-    public function update(array $input,$blog)
-    {
-//        $user = access()->user();
-        return DB::transaction(function ()use($input,$blog){
-            $blog->update([
-                'title' =>$input['title'],
-                'content' =>$input['content'],
-                'publish_date' => $input['publish_date'],
-                'publish_time' => $input['publish_time'],
-                'user_id' => 6
-            ]);
-
-
-            //sync category for a blog
-            $this->updateCategories($blog,$input);
-            return $blog;
-        });
-
     }
 
     //publish
@@ -98,6 +105,22 @@ class BlogRepository extends BaseRepository
             ]);
             return $blog;
         });
+
+    }
+
+    /*Save document(s) attached on the form*/
+    public function saveDocuments($module_functional_part_id, array $input)
+    {
+        foreach ($input as $key => $value) {
+            if (strpos($key, 'document_file') !== false) {
+                $file_id = substr($key, 13);
+                $key_file_name = 'document_file'.$file_id;
+                $document_id = 1;//task document id
+                $document_title = $file_id;
+//                $this->attachTaskDocuments($task, $document_id, $key_file_name,$document_title,$input);
+                (new DocumentResourceRepository())->saveDocument($module_functional_part_id,$document_id,$key_file_name,$input);
+            }
+        };
 
     }
 
@@ -125,7 +148,7 @@ class BlogRepository extends BaseRepository
     //get latest posts
     public function getLatestPost()
     {
-        return $this->query()->where('status',1)->latest()->get();
+        return $this->queryActive()->where('status',1)->latest()->get();
     }
 
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cms\Module;
 use App\Models\Cms\ModuleFunctionalPart;
 use App\Models\Cms\ModuleGroup;
+use App\Repositories\Cms\ModuleGroupRepository;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -22,6 +23,15 @@ class UserManualController extends Controller
     }
 
 
+    //user manual
+    public function index()
+    {
+        $modules = Module::query()->get();
+        $module_groups = ModuleGroup::query()->get();
+        return view('cms.user_manual.index')
+            ->with('module_groups',$module_groups)
+            ->with('modules',$modules);
+    }
     //user manual menu
     public function menu()
     {
@@ -31,7 +41,7 @@ class UserManualController extends Controller
     //module groups
     public function moduleGroups()
     {
-        $module_groups = ModuleGroup::query()->get();
+        $module_groups = (new ModuleGroupRepository())->query()->get();
         return view('cms.user_manual.menu')
             ->with('module_groups',$module_groups);
 
@@ -40,7 +50,36 @@ class UserManualController extends Controller
     //create module group
     public function crateModuleGroup()
     {
-        return view('');
+        return view('cms.user_manual.module_group.create');
+    }
+
+    //store user manual module group
+    public function storeModuleGroup(Request $request)
+    {
+        $input = $request->all();
+        $module_group = (new ModuleGroupRepository())->store($input);
+        return redirect()->route('cms.user_manual.module_groups');
+    }
+    //store user manual module group
+    public function updateModuleGroup(Request $request,ModuleGroup $module_group)
+    {
+        $input = $request->all();
+        $module_group = (new ModuleGroupRepository())->update($input,$module_group);
+        return redirect()->route('cms.user_manual.module_groups');
+    }
+
+    //edit module group
+    public function editModuleGroup(ModuleGroup $module_group)
+    {
+        return view('cms.user_manual.module_group.edit')
+            ->with('module_group',$module_group);
+    }
+
+    //delete module group
+    public function deleteModuleGroup(ModuleGroup $module_group)
+    {
+        (new ModuleGroupRepository())->delete($module_group);
+        return redirect()->route('cms.user_manual.module_groups');
     }
 
     //module by module group

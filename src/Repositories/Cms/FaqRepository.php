@@ -45,10 +45,11 @@ class FaqRepository extends BaseRepository
         return DB::transaction(function () use($input){
 //            $user = access()->user();
             $faq = $this->query()->create([
-                'user_id' =>6,
+                'user_id' =>access()->user()->id,
                 'title'=>$input['title'],
                 'content'=>$input['content'],
                 'isactive'=>array_key_exists('status', $input) ? $input['status'] : 0 ,
+                'rank'=>$input['rank'],
             ]);
             return $faq;
         });
@@ -63,10 +64,11 @@ class FaqRepository extends BaseRepository
     {
         return  DB :: transaction(function() use ($input, $faq){
             $faq->update([
-                'user_id' =>6,
+                'user_id' =>access()->user()->id,
                 'title'=>$input['title'],
                 'content'=>$input['content'],
                 'isactive'=>array_key_exists('status', $input) ? $input['status'] : 0 ,
+                'rank'=>$input['rank'],
             ]);
             return $faq;
         });
@@ -155,13 +157,13 @@ class FaqRepository extends BaseRepository
      * @param $logistic_service_cv_id
      * @return mixed
      */
-    public function getAllByService($logistic_service_cv_id){
+    public function getAllByRank(){
         $query = $this->query()
-            ->where('logistic_service_cv_id', $logistic_service_cv_id)
             ->orderBy('rank', 'asc')
             ->paginate(20);
         return $query;
     }
+
 
 
     /**

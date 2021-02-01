@@ -138,7 +138,7 @@ class ModuleFunctionalPartController extends  Controller
     public function getSearchFunctionalByAjax(Request $request)
     {
         $input = $request->all();
-        $module_functional_parts = ModuleFunctionalPart::where('title','LIKE', '%' . $input['search_content'] . '%' )->get();
+        $module_functional_parts = ModuleFunctionalPart::where('title','LIKE', '%' . $input['search_content'] . '%' )->orWhere('description','LIKE', '%' . $input['search_content'] . '%' )->get();
         return ($module_functional_parts);
     }
 

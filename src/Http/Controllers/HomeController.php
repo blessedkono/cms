@@ -1,12 +1,12 @@
 <?php
 
-namespace Nextbyte\Cms\Http\Controllers;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Cms\Client;
-
+use App\Repositories\Cms\ClientRepository;
+use App\Repositories\Information\ForumRepository;
+use App\Repositories\Information\NewsRepository;
 use Illuminate\Http\Request;
-use Nextbyte\Cms\Repositories\Cms\ClientRepository;
 
 class HomeController extends Controller
 {
@@ -26,8 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        return view('cms::index');
-
+        $clients = (new ClientRepository())->queryActive()->get();
+        $clients_with_testimonial =Client::whereHas('testimonial',function (){
+        })->get();
+        return view('home')
+            ->with('clients',$clients)
+            ->with('clients_with_testimonial',$clients_with_testimonial);
     }
 }

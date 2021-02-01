@@ -28,9 +28,7 @@ class BlogRequest extends Request
         $input = $this->all();
         $basic = [];
         $optional = [];
-        $array = [];
         $action_type = $input['action_type'];
-        $resource_id = isset($input['client_id']) ? $input['client_id'] : null;
         switch ($action_type){
             case 1:
                 /*When Adding*/
@@ -40,8 +38,8 @@ class BlogRequest extends Request
                     'blog_categories' => 'nullable',
                     'publish_date' => 'nullable',
                     'publish_time' => 'nullable',
-
-
+                    'isscheduled' => 'nullable',
+                    'isactive' => 'nullable',
                 ];
                 break;
             case 2:
@@ -52,6 +50,8 @@ class BlogRequest extends Request
                     'blog_categories' => 'nullable',
                     'publish_date' => 'nullable',
                     'publish_time' => 'nullable',
+                    'isscheduled' => 'nullable',
+                    'isactive' => 'nullable',
 
                 ];
                 break;
