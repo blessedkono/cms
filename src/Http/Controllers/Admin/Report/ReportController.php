@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Report;
+namespace nextbytetz\websitecms\Http\Controllers\Admin\Report;
+
 
 
 use App\DataTables\Report\ReportsByGroupDataTable;

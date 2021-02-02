@@ -1,5 +1,5 @@
 <?php
-namespace nextbytetz\websitecms\Http\Controllers\Cms;
+namespace Nextbyte\Cms\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
 
@@ -22,7 +22,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('cms.index');
+        return view('cms::cms.index');
     }
 
 

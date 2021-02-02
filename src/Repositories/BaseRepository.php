@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace Nextbyte\Cms\Repositories;
 
 use App\Exceptions\GeneralException;
 use Illuminate\Database\Eloquent\Model;

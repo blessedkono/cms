@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\System;
+namespace nextbytetz\websitecms\Http\Controllers\System;
 
 use App\DataTables\WorkflowTrackDataTable;
 use App\Exceptions\GeneralException;

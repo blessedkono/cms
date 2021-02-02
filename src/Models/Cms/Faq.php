@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Models\Cms;
+namespace Nextbyte\Cms\Http\Controllers\Cms;
 
 
 use App\Models\BaseModel\BaseModel;
@@ -11,6 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Faq extends BaseModel
 {
-    use FaqAttribute,FaqRelationship;
+//    use FaqAttribute,FaqRelationship;
     protected $guarded = [];
 }

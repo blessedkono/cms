@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers\Cms;
+namespace nextbytetz\websitecms\Http\Controllers\Cms;
 
 
 use App\Http\Controllers\Cms\traits\UserManualControllerTrait;

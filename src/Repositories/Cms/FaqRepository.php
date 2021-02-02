@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories\Cms;
+namespace Nextbyte\Cms\Repositories\Cms;
 
-use App\Models\Cms\Faq;
-use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Nextbyte\Cms\Models\Faq;
+use Nextbyte\Cms\Repositories\BaseRepository;
 
 class FaqRepository extends BaseRepository
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace nextbytetz\websitecms\Http\Controllers\Admin;
 
 use App\Http\Requests\Staff\StaffResetPassword;
 use App\Http\Requests\Staff\StaffUpdateRequest;

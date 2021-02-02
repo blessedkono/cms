@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Cms;
+namespace Nextbyte\Cms\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\Resource\FaqCreateRequest;
 use App\Models\Cms\Faq;
-use App\Repositories\Cms\FaqRepository;
 use Illuminate\Http\Request;
+use Nextbyte\Cms\Repositories\Cms\FaqRepository;
 use Yajra\DataTables\Facades\DataTables;
 
 class FaqController extends Controller
@@ -29,7 +29,7 @@ class FaqController extends Controller
     public function index()
     {
         //\
-        return view('cms.faq.index');
+        return view('cms::cms.faq.index');
     }
 
     /**

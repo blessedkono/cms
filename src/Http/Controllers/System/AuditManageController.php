@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\System;
+namespace nextbytetz\websitecms\Http\Controllers\System;
+
 
 
 use App\DataTables\System\RetrieveSysdefGroupsDataTable;

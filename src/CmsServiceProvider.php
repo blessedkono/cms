@@ -13,8 +13,9 @@ class CmsServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/routes/Cms/faq.php');
         $this->loadRoutesFrom(__DIR__.'/routes/Cms/client.php');
         $this->loadRoutesFrom(__DIR__.'/routes/Cms/testimonial.php');
-//        $this->loadViewsFrom(__DIR__.'/views','cms');
+        $this->loadViewsFrom(__DIR__.'/views','cms');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+
 
         //call method to publish files
         $this->publishFiles();

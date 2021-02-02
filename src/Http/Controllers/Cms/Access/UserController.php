@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Access;
+namespace nextbytetz\websitecms\Http\Controllers\Cms;
 
 use App\Http\Requests\Auth\ChangePasswordRequest;
 use App\Http\Requests\Auth\RegisterRequest;

@@ -1,8 +1,8 @@
 @extends('cms.layouts.cms', ['title' => trans('label.faqs'), 'header' => trans('label.faqs')])
 
-@include('includes.datatable_assets')
+{{--@include('includes.datatable_assets')--}}
 @push('after-styles')
-{!! Html::style(url('cms/vendor/sweetalert/sweetalert.css')) !!}
+{{--{!! Html::style(url('cms/vendor/sweetalert/sweetalert.css')) !!}--}}
 <style>
 
 </style>
@@ -26,7 +26,7 @@
                     </div>
 
 
-                    @include('cms.faq.includes.faq_datatable')
+{{--                    @include('cms.faq.includes.faq_datatable')--}}
                 </div>
             </section>
         </div>
@@ -34,6 +34,6 @@
 
 @endsection
 @push('after-scripts')
-{!! Html::script(url('cms/vendor/sweetalert/sweetalert.min.js')) !!}
+{{--{!! Html::script(url('cms/vendor/sweetalert/sweetalert.min.js')) !!}--}}
 
 @endpush

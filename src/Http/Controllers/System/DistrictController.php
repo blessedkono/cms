@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\System;
+namespace nextbytetz\websitecms\Http\Controllers\System;
 
 use App\Repositories\System\DistrictRepository;
 use Illuminate\Http\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace nextbytetz\websitecms\Http\Controllers;
 
 use App\Models\Cms\Client;
 use App\Repositories\Cms\ClientRepository;

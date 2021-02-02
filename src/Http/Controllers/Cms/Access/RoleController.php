@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Access;
+namespace nextbytetz\websitecms\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Access\RoleRequest;
